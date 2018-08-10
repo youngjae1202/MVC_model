@@ -1,0 +1,77 @@
+@charset "UTF-8";
+body {
+	/*브라우져별로 다른 값을 하나로 통일 */
+	margin : 0px;
+	padding : 6px;
+}
+
+
+h3 {
+	color : #ae5400;
+	font-size : 26px;
+}
+
+
+.pageTitle {
+	color:#0a7282;
+	font-size:30px;
+	font-weight:bold;
+	padding:4px;	
+}
+
+pre {
+	background : #e7e4da;
+	padding : 5px;
+	font-size : 16px;
+}
+
+.boxTable {
+	border: 1px solid gray;
+	border-collapse: collapse; 	/*인접테두리 통합 */
+}
+
+.boxTable td {
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+
+.boxTable th {
+	background-image: url(../Images/footer_bar_bg.png); /*배경에 이미지를 
+	사용, ../은 현재 자기 파일보다 한단계 위 위치이므로 web폴더를 나타냄  */
+	/*background-repeat: repeat-x;*/ /*이미지는 원본 크기로 크기가 적어 다 채우기 위해 
+	반복하는데 좌우 반복 ,기본이 좌우,상하 반복임 repeat는 계속 반복,no-repeat는 한번만,
+	repeat-x,repeat는 방향 지정*/	
+	color: White;
+	padding: 4px;
+	border-bottom: 1px solid gray;
+	/*font-weight: bold; */
+	border-collapse: collapse;
+}
+
+.box {
+	border : 1px solid gray;
+}
+
+.box .title { /*클래스가 box인 엘리먼트의 후손중 클래스가 title엘리먼트 선택 */
+	background-image: url(../Images/footer_bar_bg.png);
+	color: white;
+	padding: 4px;
+	border-bottom: 1px solid gray; /*바닥 테두리 */
+	font-weight: bold;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

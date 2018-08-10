@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>selector.html</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+	th {		
+		background: #e1e1e1;		
+        /*text-align: left; */ /*th의 글자 정렬은 기본이 중앙정렬이므로 변경 */        
+	}
+	
+	td {
+		vertical-align: top;  /*테이블안의 내용의 상하 정렬은 중앙이므로 top으로 변경 */
+	}
+	
+	.myCss {
+		font-weight: bold;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#btn1").click(function(){
+		$("[href]").hide();
+	});
+});
+</script>
+</head>
+<body>
+
+<div class="pageTitle">
+JQuery에서 Selector 사용법
+</div>
+
+<p>
+Jquery는 하나의 엘리먼트나 엘리먼트 그룹을 선택하는 간단한 방법을 제공한다.
+태그이름,id,class와 속성을 사용하여 접근 할수 있다
+선택은 Selector를 사용하며 CSS의 Selector사용법과 거의 동일하다.
+</p>
+
+<h3>Selector 사용 구문</h3>
+<table class="boxTable" cellspacing="0" cellpadding="6" width="100%">
+<!-- cellspacing은 테이블의 각 칸의 간격, cellpadding은 각칸의 내부 여백 속성이고
+table의 너비는 기본은 내용을 포함할수 있는 넓이만 차지하므로 고정 넓이는 width로 지정 -->
+	<tr>
+		<th>엘리먼트 선택</th>
+		<th>예문</th>
+		<th>설명</th>
+		<th>실행버튼</th>
+		<th>실행결과</th>
+	</tr>
+	<tr>
+		<td>$("TagName")</td>
+		<td>$("blockquote").css("color","red");</td>
+		<!-- blockquote태그명으로된 엘리먼트를 선택해서 css속성의 글자 색을 red로 설정 -->
+		<td>해당 TagName인 blockquote으로 된 모든 엘리먼트를 선택</td>
+		<td>
+			<input type="button" value="예문실행" 
+			onclick="$('blockquote').css('color','red');">
+			<!-- onclick은 클릭이벤트처리 속성으로 클릭하면 속성값인 자바스크립트
+			를 실행함,인용부호가 내부에도 나오면 다른 인용부호를 사용 외부는 "" 내부는
+			' '임-->
+		</td>
+		<td>
+			<blockquote>Here is example text for the first 
+			selector example.</blockquote>
+			<blockquote>Here is second block quote text...</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td>$("#id명")</td>
+		<td>$("#item1").css("color","red")</td>
+		<td>item1으로 된 id를 가진 엘리먼트를 선택</td>
+		<td><input type="button" value="예문실행" 
+			onclick="$('#item1').css('color','red');"></td>
+		<td><span id="item1">First line inside the &lt;span id="item1" 
+			&gt;</span> <br/>
+			<span id="item2">Second line inside the &lt;span id="item2" 
+			&gt; </span> <br/>
+			<span id="item1">First line inside the &lt;span id="item1" 
+			&gt; </span>
+			<!-- &lt;와 &gt;는 entity문자로 <와 >를 나타내는 특수문자로 내용에
+			html tag를 사용시 주로 사용,공백 엔터티는 &nbsp;를 사용 -->			
+		 </td>
+		 <!-- id로 엘리먼트 선택시는 맨처음의 엘리먼트만 선택됨 -->
+	</tr>
+	<tr>
+		<td>$(".class명")</td>
+		<td>$(".myCss").css("color","red")</td>
+		<!-- myCss클래스의 속성에 color:red속성을 추가 -->
+		<td>클래스명이 myCss인 엘리먼트를 선택하여  스타일에 color:red속성을 추가</td>
+		<td><input type="button" value="예문실행" 
+			onclick="$('.myCss').css('color','red');"></td>
+		<td>
+			<span class="myCss">First line for testing. </span>
+            <br />
+            <span class="myCss">Second line for testing. </span>
+            <br />
+		</td>
+		<!-- class로 선택시는 모든 엘리먼트를 선택 -->
+	</tr>
+	<tr>
+		<td>$("[속성명]")</td>
+		<td>$("[href]").hide();</td>
+		<td>속성 href가 있는 모든 엘리먼트를 선택하여 hide함</td>
+		<td>
+			<button id="btn1">예문실행</button>
+		</td>
+		<td>
+			<p><a href="https://www.w3schools.com/html/" target="_blank">
+			HTML Tutorial</a></p>
+			<p><a href="https://www.w3schools.com/css/" target="_blank">
+			CSS	Tutorial</a></p>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

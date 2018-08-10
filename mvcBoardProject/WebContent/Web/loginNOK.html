@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>index.html</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<style>
+html,body {
+	margin : 0px;
+	padding : 0px;
+}
+
+#div1 {
+	border : 1px solid #e1e1e1;	
+	box-sizing: border-box;	
+}
+#div2 {	
+	border : 1px solid #e1e1e1;
+	background : #d8d8d8;
+	box-sizing: border-box;
+	height : 700px;
+}
+
+img {
+	width : 100%;
+	height : 300px;	
+}
+
+form {
+	width : 40%;
+	margin : auto;
+	position : relative;
+	top : 100px;
+}
+
+input {
+	padding : 10px;
+}
+
+[type="submit"] {
+	display : inline-block;	
+	position : relative;
+	left : 40px;	
+}
+
+#btn1 {	
+	display : inline-block;
+}
+
+#btn2 {	
+	display : inline-block;
+	position : relative;
+	left : 70px;	
+}
+
+button {
+	padding : 10px 10px;
+	
+}
+
+h3 {
+	text-align : center;
+	font-weight : bold;
+	margin : 6px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#btn1").click(function(e){
+		location.href = "Web/join.jsp";
+		e.preventDefault();
+	});
+	$("#btn2").click(function(e){
+		location.href = "Web/seekInfo.jsp";
+		e.preventDefault();
+	});
+	
+	alert("로그인에 실패 했습니다");
+});
+</script>
+</head>
+<body>
+
+<div id="div1">
+	<img src="Web/Images/shalcom.jpg">
+</div>
+<h3>본 프로젝트는 </h3>
+<h3 style="color:green">클라이언트는 HTML5,CSS(3),자바스크립트,JQuery,AJAX,RWD 등의 기술이 적용되었으며</h3>
+<h3 style="color:blue"">서버는 Servlet/JSP를 이용한 MVC모델로 FrontController,Command형태를 채택 하였고 </h3>
+<h3 style="color:red"">데이터베이스 접속은 ORACLE DBCP를 이용하였읍니다.</h3>
+<div id="div2">
+	<form action="login.do" method="post">
+		<fieldset>
+			<legend>로그인</legend>		
+			<b>아이디 :</b> <input type="text" name="uid" size="40" placeholder="E-Mail주소 입력"><br/><br/>
+			<b>비&nbsp;&nbsp;&nbsp;번 :</b> <input type="password" name="upw" size="40" placeholder="비밀번호 입력"><br/><br/>
+			<div>
+				<button id="btn1" style="margin-left:20px;">회원가입</button><input type="submit" value="로그인">
+				<button id="btn2">ID,PW찾기</button>
+			</div>			
+		</fieldset>
+	</form>
+</div>
+
+
+
+</body>
+</html>

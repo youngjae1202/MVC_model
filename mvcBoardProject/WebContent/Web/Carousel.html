@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Carousel</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css" />
+<style>
+#carousel {
+		width: 449PX;
+        height: 375PX;
+        border: 2px solid black;
+        background-color: #948b6d;
+}
+#imageContainer {
+		display : none;
+}
+#imageContainer.selected {
+/*아이디가 imageContainer인 엘리먼트의 클래스가 selected */
+		display : block;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	//함수 호출
+	SetCarousel();
+	SetTimer();
+});
+//함수는 ready()함수 밖에서 정의
+//자바스크립트함수 정의
+function SetCarousel() {
+	 $("#carousel #imageContainer").first().addClass("selected");
+}
+
+function SetTimer() {
+	setInterval(showNext, 2000);
+	//setInterval(showNext, 2000);함수는 자바스크립트 내장 함수 showNext는 실행할 함수, 2000은 정지 시간
+	//2000밀리세컨드 후에 showNext()를 실행
+}
+
+function showNext() {
+	var sel = $("#carousel #imageContainer.selected"); //엘리먼트 객체를 선택 해서 변수 sel에 저장
+	sel.removeClass("selected"); //sel객체에서 class속성 제거
+	var nextImge = sel.next(); //다음 sel객체 선택해서 변수 nexrInage에 저장
+	var id = $(nextImge).attr("id"); //속성 id가 있는 nextImge객체 선택해서 변수 id에 저장
+    if (id != null) {
+        nextImge.addClass("selected"); //객체id가 있는 경우
+    }
+    else {
+    	SetCarousel();
+    }
+}
+</script>
+</head>
+<body>
+
+<div class="pageTitle">JQuery를 이용한 Carousel </div>
+<br/>
+<p>여러개의 사진을 회전 목마 처럼 계속해서 순환하며 보여 주는 예제</p>
+<br/>
+<div id="carousel">
+	<div id="imageContainer">
+		<img src="Web/Images/b1.jpg" />
+		<div class="imageDetail">
+			 First image..
+		</div>
+	</div>
+	<div id="imageContainer">
+		<img src="Web/Images/b2.jpg" />
+		<div class="imageDetail">
+			 Second image..
+		</div>
+	</div>
+	<div id="imageContainer">
+		<img src="Web/Images/b3.jpg" />
+		<div class="imageDetail">
+			Third image..
+		</div>
+	</div>	
+</div>
+
+<h3>Sample Code</h3>
+<pre>
+
+$(document).ready(function(){
+	//함수 호출
+	SetCarousel();
+	SetTimer();
+});
+//함수는 ready()함수 밖에서 정의
+//자바스크립트함수 정의
+function SetCarousel() {
+	 $("#carousel #imageContainer").first().addClass("selected");
+}
+
+function SetTimer() {
+	setInterval(showNext, 2000);
+	//setInterval(showNext, 2000);함수는 자바스크립트 내장 함수 showNext는 실행할 함수, 2000은 정지 시간
+	//2000밀리세컨드 후에 showNext()를 실행
+}
+
+function showNext() {
+	var sel = $("#carousel #imageContainer.selected"); //엘리먼트 객체를 선택 해서 변수 sel에 저장
+	sel.removeClass("selected"); //sel객체에서 class속성 제거
+	var nextImge = sel.next(); //다음 sel객체 선택해서 변수 nexrInage에 저장
+	var id = $(nextImge).attr("id"); //속성 id가 있는 nextImge객체 선택해서 변수 id에 저장
+    if (id != null) {
+        nextImge.addClass("selected"); //객체id가 있는 경우
+    }
+    else {
+    	SetCarousel();
+    }
+}
+
+</pre>
+
+</body>
+</html>

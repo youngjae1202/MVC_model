@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Home.html</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+	div {
+		 border: 1px dotted gray;
+		 width : 150px;
+		 margin: 5px;
+         padding: 5px;
+         cursor: pointer;
+         text-align: center;
+	}
+	
+	.SelectDiv {
+		border: 1px solid gray;
+        background: #e1e1e1;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("div").click(function(){
+		$(".SelectDiv").removeClass("SelectDiv");
+		$(this).addClass("SelectDiv");
+	});
+});
+</script>
+</head>
+<body>
+
+<!-- 외부 css의 속성을 이용 -->
+<span class="pageTitle">JQuery</span>
+
+<p>
+   JQuery는 javascript library이며, 웹개발시 필요한 광범위한 영역(이벤트 처리, 
+   animation,   Ajax,html문서 전달 등)에 사용되며 자바스크립트를 간편하게 사용할수
+    있도록 해준다   .
+</p>
+
+<h3>$(document).ready(function()) Method 설명</h3>
+
+<!-- pre엘리먼트는 내용을 html문서에 작성한대로 보여줌(공백,줄바꾸기..)이
+실제 보여줄때는 공백은 한개만 인정하고 줄도 공백 하나로 처리하는 것을 그대로 보여줌 -->
+<pre>
+  $(document).ready(function(){
+	alert("document is ready");
+  });
+</pre>
+
+<p>
+	$(document).ready Method는 HTML문서,DOM,이미지가 모두 준비 된 상태에서 실행된다
+</p>
+
+<p>
+	아래의 엘리먼트를 클릭하면 jquery를 이용하여 클릭한 엘리먼트에 정해진 style을 적용한다
+	<div>First Div</div>
+	<div>Second Div</div>
+	<div>Third Div</div>
+</p>
+
+<p>코드는 SelectDiv클래스를 만들어 선택된 엘리먼트를 클릭시 SelectDiv클래스를
+추가하거나 제거 해주면 된다 </p>
+
+<pre>
+	$("div").click(function(){
+		$(".SelectDiv").removeClass("SelectDiv");
+		$(this).addClass("SelectDiv");
+	});
+</pre>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

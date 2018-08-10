@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>menu.html</title>
+
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+
+<!-- 스타일의 internal의 external의 우선 순위는 늦게 나오는 것이 높음 -->
+
+<style>
+	a {
+		display : block; /*a는 inline인데 이를 block으로 변경 */
+		text-decoration: none; /*링크텍스트 밑줄 표시 제거 */
+		width: 150px; /*블록레벨은 width는 부모의 100%를 차지하므로 크기 줌 */
+		text-align: center;
+		border: 1px dotted gray;
+		color : black;
+		padding : 5px;
+		margin : 5px;
+		cursor: pointer;
+	}
+	a:hover { /*마우스를 갖다 되는 스타일은 유사클래스 :hover를 이용 */
+		border: 1px solid gray;
+		background: #e1e1e1;
+	}
+</style>
+</head>
+<body>
+
+<h3>Basic</h3>
+
+<div>
+<!-- href의 html을 클릭하면 name속성이 content인 iframe창에 보여줌 -->
+	<a href="Web/home.html" target="content">Home</a>
+	<a href="Web/selector.html" target="content">Selector</a>
+	<a href="Web/slideEffect.html" target="content">Silde Effect</a>
+	<a href="Web/fadeEffect.html" target="content">Fade Effect</a>
+	<a href="Web/animationEffect.html" target="content">Animation Effect</a>
+</div>
+
+<h3>Intermediate</h3>
+
+<div>
+	<a href="Web/TabExample.html" target="content">Tab Example</a>
+	<a href="Web/Carousel.html" target="content">Carousel</a>
+	<a href="Web/CarouselAdvance.html" target="content">Advance Carousel</a>
+	<a href="Web/ajax.html" target="content">Ajax</a>
+	<a href="Web/rwd.html" target="content">RWD</a>
+	<a href="Web/naviBar.html" target="content">Navi-Bar</a>			
+</div>
+
+<h3>MyPage</h3>
+<div>
+	<a href="list.do" target="content">My JSP Board</a>
+	<a href="Web/portFolio.html" target="content">My PortFolio</a>
+</div>
+</body>
+</html>

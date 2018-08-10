@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>TabExample.html</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+#tabArea { /*전체 수용 콘테이너 */
+	 border: 1px dotted gray;
+     background: #cac2aa;
+}
+#tabHeader {
+	margin: 5px;
+    background: #cac2aa;
+    height: 40px;
+}
+#tab-data.selectedTab { /*id가 tab-data이고 클래스가 selectedTab */
+	display: block;
+    color: black;
+    background: white;
+    height: 400px;
+    padding: 5px;
+}
+.tab { /*class속성이 두개일시는 우선 적용을 나중에 줌. tab보다 아래의 selectTabHeader가
+         먼저 적용됨 */
+	/*background: gray;*/	
+    background-image: url(Images/footer_bar_bg.png);
+    /*background-repeat: repeat-x;*/
+	color: white;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid gray;
+    display : inline-block;
+    width: 100px;
+    text-align: center;
+    cursor: pointer; /*손바닥모양의 커서 생성 */
+}
+.selectTabHeader {
+	background: #948b6d;
+    border: 1px solid #554d3c;
+    color: black;
+    font-weight: bold;
+}
+#tab-data {
+	display : none;
+}
+
+#tab-data.selectedTab {
+    	/*id가 tab-data이며 클래스가 selectedTab인 것 */
+   	display: block;
+    color: black;
+    background: white;
+    height: 400px;
+    padding: 5px;
+}
+
+img {
+	width : 100%; /*이미지 크기를 가로는 parent의 크기로 설정 */
+	height : 100px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#tabHeader a").click(function(){
+		$(".selectTabHeader").removeClass("selectTabHeader");
+		$(this).addClass("selectTabHeader");
+		var v = this.id; //현재 선택된 엘리먼트(this)의 id속성값을 v에 저장
+		$(".selectedTab").removeClass("selectedTab");
+		$("." + v).addClass("selectedTab");
+	});
+});
+</script>
+</head>
+<body>
+
+<div class="pageTitle">JQuery를 이용한 Tab만들기</div>
+
+<div id="tabArea"> <!-- 최상위 수용 콘테이너 -->
+	<div id="tabHeader"> <!-- 헤더부 콘테이너 -->
+	<!-- <a>에 href속성을 안주면 링크텍스트에 밑줄이 없고 커서도 pointer로 안생김 -->
+		<a class="tab selectTabHeader" id="tab1">Tab 1 </a>
+		<a class="tab" id="tab2">Tab 2</a>
+		<a class="tab" id="tab3">Tab 3</a>
+	</div>
+	<div id="tabData"> <!-- 내용부 콘테이너 -->
+		 <div id="tab-data" class="tab1 selectedTab"> <!-- class를 2개 선언 -->
+		 	<div>
+		 		<img src="Web/Images/tab1.jpg">
+		 		<h3>Tab 1</h3>
+		 		<p>tab1을 클릭시 보여주는 화면입니다.</p>
+		 	</div>
+		 </div>
+		 <div id="tab-data" class="tab2">
+		 	<div>
+		 		<img src="Web/Images/tab2.jpg">
+		 		<h3>Tab 2</h3>
+		 		<p>tab 2을 클릭시 보여주는 화면입니다.</p>
+		 	</div>
+		 </div>
+		 <div id="tab-data" class="tab3">
+		 	<div>
+		 		<img src="Web/Images/tab3.jpg">
+		 		<h3>Tab 3</h3>
+		 		<p>tab 3을 클릭시 보여주는 화면입니다.</p>
+		 	</div>
+		 </div>
+	</div>
+</div>
+
+<h3>Code Sample</h3>
+<pre>
+$(document).ready(function(){
+	$("#tabHeader a").click(function(){
+		$(".selectTabHeader").removeClass("selectTabHeader");
+		$(this).addClass("selectTabHeader");
+		var v = this.id; //현재 선택된 엘리먼트(this)의 id속성값을 v에 저장
+		$(".selectedTab").removeClass("selectedTab");
+		$("." + v).addClass("selectedTab");
+	});
+});
+</pre>
+
+</body>
+</html>
+
+
+

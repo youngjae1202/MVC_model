@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>animationEffect.html</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+#lnkMoreDetail,#lnkClose {
+	display : block; /*클릭하는 범위를 여유 있게 지정(<a>는 링크텍스트로 국한) */
+	padding: 5px;
+    cursor: pointer;
+    width: 110px; /*블록레베로 변경되어 가로 크기가 100%이므로 이를 조정 */
+    border : 1px dotted gray;
+    text-decoration: none;
+    color : black;
+    font-size : 14px;
+}
+#lnkMoreDetail,#lnkClose:hover {
+	 background: #e1e1e1;
+	 border: 1px solid gray;
+}
+</style>
+<script src="//code.jquery.com/jquery-latest.min.js">
+</script> 
+<script>
+$(document).ready(function(){
+	$("#lnkMoreDetail").click(function(){		
+		$("#img1").animate({width: 449, height: 339},"slow");
+		//css에서는 크기 단위 px을 붙이나 jquery에서는 안붙임
+		$("#imgDescription").show();
+		$("#lnkMoreDetail").hide();
+	});	
+	
+	$("#lnkClose").click(function(){		
+		$("#imgDescription").hide();
+		$("#img1").animate({ height: 120 }, "fast");
+        $("#img1").animate({ width: 120 }, "fast");
+        $("#lnkMoreDetail").show();
+	});
+});
+</script>
+</head>
+<body>
+
+<div class="pageTitle">Animation Effect</div>
+
+<p>
+	Jquery는 애니메이션 방법을 제공하고 관련 메서드 형식은 다음과 같다<br/>
+	<b>animate( properties, [duration], [easing], [callback])</b>
+	<!-- ol엘리먼트로 메서드의 파라메터 항목 리스트를 만듬 -->
+	<ol>
+		<li><b>properties:</b> 애니메이션을 통해 변경될 css의 속성을 나타내는 파라메터
+			css의 속성 표시방법으로 작성 {width : 200px;} 하며 필수 항목임</li>
+		<li><b>duration:</b> 애니메이션에 걸리는 시간으로 옵션 항목이며
+			밀리세컨드나 slow,fast로 표시</li>
+		<li><b>easing:</b> 변경에 사용되는 수학적 함수의 이름으로 옵션 사항</li>
+		<li><b>callback:</b> 애니메이션 완료후 실행할 함수로 옵션 사항</li>
+	</ol>	
+</p>
+
+<h3>Example</h3>
+
+<div>
+	<img id="img1" src="Web/Images/b1.jpg" style="width:120px;height:120px;"><br/>
+	<p id="lnkMoreDetail">애니메이션실행</p>
+	<div id="imgDescription" style="display:none;">
+		이영역은 애니메이션실행을 클릭시 보여주는 영역으로 애니메이션실행 클릭전에는
+		보이지 않게 하고 클릭하면 크기를 변경하는 animate()메서드로 보이게 되는 영역
+		<!-- 원래로 복귀하는 처리를 위한 엘리먼트 -->
+		<div>
+			<p id="lnkClose">원래크기로 복귀</p>
+		</div>		
+	</div>
+</div>
+
+<h3>Code Sample</h3>
+
+<pre>
+$(document).ready(function(){
+	$("#lnkMoreDetail").click(function(){
+		$("#img1").animate({width: 449, height: 339},"slow");
+		//css에서는 크기 단위 px을 붙이나 jquery에서는 안붙임
+		$("#imgDescription").show();
+		$("#lnkMoreDetail").hide();
+	});	
+	
+	$("#lnkClose").click(function(){
+		$("#imgDescription").hide();
+		$("#img1").animate({ height: 120 }, "fast");
+        $("#img1").animate({ width: 120 }, "fast");
+        $("#lnkMoreDetail").show();
+	});
+});
+</pre>
+
+</body>
+</html>
+
+
+
+
+
+
+

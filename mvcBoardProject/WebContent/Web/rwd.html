@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"> 
+<!--RWD를 위한 메타 정보  -->
+<title>RWD</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+* {
+	 box-sizing: border-box; /*RWD에서 엘리먼트의 크기를 정할시 padding공간과 border공간을 포함 */
+}
+
+.header {
+	background-color: #9933cc;
+    color: #ffffff;
+    padding: 15px;
+    text-align : center;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+	padding: 8px;
+    margin-bottom: 7px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+	 background-color: #0099cc;
+}
+[class*="col-"] { /*가장 작은 화면인 모바일 폰에 적용되는 속성 */
+	float: left; /*블록엘리먼트를 인라인으로 한줄에 배치하되 왼쪽부터 배치 이속성은 모든 col-속성에 적용 */
+    padding: 15px; /* 이속성은 모든 col-속성에 적용 */
+    width: 100%;
+}
+@media only screen and (min-width: 600px) { /*단말의 넓이가 600~768사이의 단말기로 태블릿 */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+ }   
+@media only screen and (min-width: 768px) { /*화면크기가 768px이상인 디바이스이므로 데스크탑 */
+	/*RWD에서는 가로크기를 12개의 컬럼으로 분할하여 크기를 결정 */
+	.col-1 {width: 8.33%;} /*@media를 사용하여  컬럼수에 대한 클래스를 정의 */
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+video {
+    width: 100%;
+    height: auto;
+    border : 1px solid #e1e1e1;
+}
+.aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.footer {
+	background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+.row:after {
+    content: "";
+    clear: both; /*float를 해제 */
+    display: table;
+}
+</style>
+
+<script src="//code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+$(document).ready(function(){
+});
+</script>
+</head>
+<body>
+
+<div class="pageTitle">RWD를 이용한 페이지 </div>
+<br/>
+<p>
+RWD는 디바이스에 적용되는 Web화면 디자인을 위한 기술임
+	<ul>
+		<li><b>RWD는 : Responsive Web Design</b></li>
+		<li><b>HTML과 CSS로 구성</b></li>
+		<li><b>FrameWork로는 W3.css와 BootStrap이 많이 사용됨</b></li>
+	</ul>
+</p>
+
+<p style="color:red;font-size:16px;">&lt;화면의 크기를 데스크탑, 태블렛, 스마트폰 크기 정도로 조정해 보세요&gt;</p>
+
+<div class="header">
+	<h1>대한민국</h1>
+</div>
+
+<div class="row">
+	<div class="col-3 col-s-3 menu"> <!-- class를 3개 적용하고 디바이스에 따른 너비는 3칸(25%)사용-->
+		<ul>
+			<li>비행편</li>
+			<li>도시</li>
+			<li>도서지역</li>
+			<li>음식</li>
+		</ul>
+	</div>
+	 
+	<div class="col-6 col-s-9"> 
+		<h1>서울</h1>
+		<p>서울은 대한민국의 수도이다.서울은 강남과 강북 2개 지역으로 구분되며 인구는 약 800백만이다. 대한민국의 정치,경제,문화의
+		중심지이고 주요 관공서,교육기관,문화시설 등이 집중되어 있다.....
+		</p>
+		<div>
+			<video controls> <!-- controls는 플레이어의 버튼을 제공 -->
+				<source src="Web/Resources/mov_bbb.mp4" type="video/mp4"> <!-- play할 비디오 파일 -->
+    			<source src="Web/Resources/mov_bbb.ogg" type="video/ogg">
+				video를 지원 못하는 블라우져를 사용시 보여 주는 안내창(귀하의 브라우져는 video를 지원 못합니다)
+			</video>
+		</div>		
+	</div>
+	<div class="col-3 col-s-12">
+		<div class="aside">
+			<h2>What?</h2>
+		    <p>Seoul is a city on Korea.</p>
+		    <h2>Where?</h2>
+		    <p>한반도의 중앙에 위치.</p>
+		    <h2>How?</h2>
+		    <p>인천국제공항이나 김포국제공항을 이용</p>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+  <p>Resize the browser window to see how the content respond to the resizing.</p>
+</div>
+
+
+
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+

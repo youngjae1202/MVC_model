@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Navi-bar</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+li {
+	float : left;
+}
+li a, .dropbtn {
+	display: inline-block; /*클릭범위를  늘려줌 */
+    color: white;
+    text-align: center;
+    padding: 14px 16px; /*a엘리먼트를 크기를 늘려줌 */
+    text-decoration: none;
+}
+
+li.dropdown {
+	 display: inline-block;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+	 background-color: red;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #e8e8e8;
+}
+iframe {
+	width : 100%;
+	height : 100%;
+	border : none;	
+}
+html,body {
+	height : 100%; /*block은 width는 전체 화면 100%이나 height는 내부 엘리먼트가 
+	차지 하는 영역만 기본으로 차지 */
+	margin : 0px;
+	padding : 0px;
+}
+</style>
+</head>
+<body>
+
+<ul>
+	<li><a href="Web/home.html" target="navi">Home</a></li>
+	
+	<li class="dropdown"><a class="dropbtn" href="javascript:void(0)">Basic</a>
+		<div class="dropdown-content">  <!-- sub menu들 -->
+			<a href="Web/selector.html" target="navi">Selector</a>
+      		<a href="Web/slideEffect.html" target="navi">Slide Effect</a>
+      		<a href="Web/fadeEffect.html" target="navi">Fade Effect</a>
+		</div>
+	</li>
+	<!-- href="javascript:void(0)"은 a엘리먼트 클릭시 동작시키지 말것 -->
+	<li class="dropdown"><a class="dropbtn" href="javascript:void(0)">Intermediate</a>
+		<div class="dropdown-content">  <!-- sub menu들 -->
+			<a href="Web/selector.html" target="navi">Selector</a>
+      		<a href="Web/slideEffect.html" target="navi">Slide Effect</a>
+      		<a href="Web/fadeEffect.html" target="navi">Fade Effect</a>
+		</div>
+	</li>
+	<li class="dropdown"><a class="dropbtn" href="javascript:void(0)">MyPage</a>
+		<div class="dropdown-content">  <!-- sub menu들 -->
+			<a href="Web/selector.html" target="navi">Selector</a>      		
+		</div>
+	</li>
+</ul>
+
+<div class="pageTitle">수평 Navi-Bar에 Drop-Down메뉴 만들기</div>
+
+<iframe name="navi"></iframe>
+
+
+
+</body>
+</html>

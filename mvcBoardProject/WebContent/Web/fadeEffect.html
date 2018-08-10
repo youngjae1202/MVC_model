@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>fadeEffect</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+#div1 {
+	display : inline-block; /*블록레벨인 div를 inline속성도 갖도록 처리*/ 
+	padding-left : 6px;	
+}
+#div2 {
+	display : inline-block;
+	padding-left : 20px;
+}
+#imgFade {
+	width : 150px;
+	height : 150px;
+	margin : 20px;	
+}
+
+a {
+	display : block; /*인라인레벨인 <a>를 블록레벨로 변경 */
+	margin: 5px;
+	padding: 5px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    border: 1px dotted gray;
+    text-decoration: none;
+    color : black;
+}
+a:hover { /*유사클래스 */
+	border: 1px solid gray;
+    background: #e1e1e1;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#lnkFadeOut").click(function(e){
+		$("#imgFade").fadeOut(2000);
+		e.preventDefault();
+	});
+	$("#lnkFadeIn").click(function(e){
+		$("#imgFade").fadeIn(2000);
+		e.preventDefault();
+	});
+	$("#lnkFadeToggle").click(function(e){
+		$("#imgFade").fadeToggle(2000);
+		e.preventDefault();
+	});	
+});
+</script>
+</head>
+<body>
+
+<div class="pageTitle">Fading Effect</div>
+
+<p>
+	jquery는 선택된 엘리먼트 투명도를 점진적으로 변경시키는 4개의 메서드를 가지고 있음
+	<ol>
+		<li><b>fadeTo(speed, opacity, callback) :&nbsp;</b> 불투명도 opacity로
+		 점진적으로 투명도 변경</li>
+		<li><b>fadeIn(speed, callback) :&nbsp; </b>opacity를 0에서 1로 변경(show)</li>
+		<li><b>fadeOut(speed, callback) :&nbsp;</b>opacity를 1에서 0으로 변경(hide)</li>
+		<li><b>fadeToggle(speed, callback) :&nbsp;</b>반복</li>
+	</ol>
+	파라메터 speed는 fade처리 시간, opacity는 불투명도(0~1),callback은 콜백 함수 정의이며
+	모든 파라메터는 옵션 파라메터임
+</p>
+
+<h3>Example</h3>
+
+<div style = "border:1px solid gray;padding:10px;"> <!-- 좌우넓이는 100% -->
+	<div id="div1"> <!-- 선택 영역 -->
+		<a href="#" id="lnkFadeOut">Fade out</a> <br/><br />
+		<a id="lnkFadeIn" href="#">FadeIn</a> <br/><br />
+		<a href="#" id="lnkFadeToggle">FadeToggle</a> 
+	</div>
+	<div id="div2"> <!-- 사진 영역 -->
+		<img id="imgFade" src="Web/Images/b1.jpg">
+	</div>
+</div>
+
+<h3>Code Sample</h3>
+<pre>
+$(document).ready(function(){
+	$("#lnkFadeOut").click(function(){
+		$("#imgFade").fadeOut(2000);
+	});
+	$("#lnkFadeIn").click(function(){
+		$("#imgFade").fadeIn(2000);
+	});
+	$("#lnkFadeToggle").click(function(){
+		$("#imgFade").fadeToggle(2000);
+	});	
+});
+</pre>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

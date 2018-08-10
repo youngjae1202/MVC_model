@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>CarouselAdvance</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<!-- rel 속성은 a 요소, link 요소, area 요소에서 사용되며, 링크된 대상과의 관계를 지정합니다. -->
+<style>
+.advanceCarousel
+{
+    width: 453px;
+    border: 1px solid black;
+}
+
+.carouselWindow
+{
+    height: 400px;
+    width: 449px;
+    margin: 2px;
+    overflow: hidden; /*--Hides anything outside of the set width/height--*/
+    position: relative;
+}
+.imageReel
+{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.imageReel .image
+{
+    float: left;
+    border: 0px solid white;
+}
+
+.imageReel .image img
+{
+    border: 0px solid white;
+}
+
+.description
+{
+    padding: 4px;
+    background: #948b6d;
+    height: 60px;
+}
+
+
+.paggingBar
+{
+    height: 35px;
+    z-index: 100; /*--Assures the paging stays on the top layer--*/
+    line-height: 35px;
+    text-decoration: none;
+    font-weight: bold; /*--Hidden by default, will be later shown with jQuery--*/
+}
+
+.aNav
+{
+    padding: 5px;
+    text-decoration: none;
+    color: #29a0b9;
+    font-weight: bold;
+    font-size: 10pt;
+    margin-top: 15px;
+    outline: none;
+}
+
+.paging
+{
+    text-align: center;
+}
+
+
+.paging a
+{
+    padding: 5px;
+    text-decoration: none;
+    color: #29a0b9;
+    font-weight: bold;
+    font-size: 10pt;
+    outline: none;
+}
+
+.paging a.active
+{
+    font-weight: bold;
+    border: 1px solid #000000;
+}
+
+.paging a:hover
+{
+    font-weight: bold;
+}
+</style>
+<!--  
+<script src="Web/Scripts/jquery-1.6.2.min.js">
+</script>
+-->
+
+<!-- jquery 최신버젼 -->
+<script src="//code.jquery.com/jquery-latest.min.js">
+</script> 
+
+<script>
+$(document).ready(function(){
+	
+	$(".paging a:first").addClass("active");
+	//자바스크립트로 필요한 변수 설정
+	var imageWidth = $(".carouselWindow").width();
+	//".carouselWindow의 가로크기 : 449px
+    var imageSum = $(".imageReel .image img").size(); 
+	//".imageReel .image img"엘리먼트 개수 구함 (3개)
+    var imageReelWidth = imageWidth * imageSum;
+	
+    $(".imageReel").css({"width" :imageReelWidth}); //이미지콘테이너창의 가로를 3장이 들어가는 크기로 조정
+	
+    rotate = function () { //자바스크립트는 함수도 변수 처리  rotate는 전역변수로 함수를 가짐
+    	var triggerID = $active.attr("rel") - 1; //클릭한 페이지번호에서 1을 뺀것
+    	var image_reelPosition = triggerID * imageWidth;
+    	$(".paging a").removeClass("active"); 
+    	$active.addClass("active");    	
+    	$(".imageReel").animate({
+    		left : -image_reelPosition
+    	},500);
+    }
+	    
+    startRotation();
+    
+    $(".paging a").click(function(){
+    	$active = $(this); //자바스크립트 변수 $active에   클릭한 a엘리먼트를 저장
+    	//변수 선언시 var이 사용하면 로칼변수가 아니고 전역 변수가 됨
+    	RotateImmediate();
+    	return false; //브라우져가 link로 점프하지 못하도록 함
+    });   
+
+});
+
+function RotateImmediate() {
+	clearInterval(play); //Stop the rotation(자바스크립트 내장 함수)	
+	rotate();
+	startRotation(); 
+}
+
+function startRotation() {
+	play = setInterval(function(){
+		$active = $(".paging a.active").next();
+		if($active.length == 0) {
+			 $active = $(".paging a:first");
+		}
+		rotate(); //전역변수로 선언된 rotate()함수 호출
+	},7000);
+}
+
+function RotatePrevious() {
+	var next = $(".paging a.active").prev(); //prev()메서드는 jquery내장 함수로 앞의 객체
+	if (next.length > 0) {
+		$active = next;
+        RotateImmediate();
+	}
+}
+
+function RotateNext() {
+	var next = $(".paging a.active").next(); //next()로 바로 다음 객체 구함
+    if (next.length > 0) {
+        $active = next;
+        RotateImmediate();
+    }
+}
+
+
+</script>
+</head>
+<body>
+
+<div class="pageTitle">CarouselAdvance(이동 bar에 의한 이동)</div>
+<p>
+이동 bar에 있는 번호를 클릭하여 페이지를 이동하고 지정 시간이 되면 자동 이동하는 예
+	<ol>
+		<li><b>여러개의 대상 페이지에서 클릭 이벤트를 받으면 활성화 처리 변수에 지정</b></li>
+		<li><b>한개의 대상만 보이도록 콘테이너를 초과 해서 수용된 페이지는 overflow로 처리</b></li>
+		<li><b>오버flow된 페이지는 animate()로 보이는 영역을 조정</b></li>
+	</ol>
+</p>
+
+<div id="carousel" class="advanceCarousel"> <!-- 이미지처리부와 이동 bar처리 부분을 수용하는 콘테이너 -->
+	<div class="carouselWindow">
+		<div class="imageReel"> <!-- 이미지 처리 콘테이너 -->		
+			<div class="image">
+				<a href="#" target="_blank"><img src="Web/Images/b1.jpg" /></a>				
+				<div class="description">
+					첫번째 이미지.....
+				</div>
+			</div>		 
+			<div class="image">
+				<a href="#" target="_blank"><img src="Web/Images/b2.jpg" /></a>	
+				<div class="description">
+					두번째 이미지....
+				</div>
+			</div>
+			<div class="image">
+				<a href="#" target="_blank"><img src="Web/Images/b3.jpg" /></a>	
+				<div class="description">
+					세번째 이미지....
+				</div>
+			</div>		
+		</div>	
+	</div>
+	
+	<div class="paggingBar"> <!-- 그림 이동을 위한 이동 bar -->
+		<div style = "float : left;"> <!-- float하면 inline모드로 바뀜 -->
+			<a class="aNav" href="javascript:RotatePrevious()">&lt;&lt;</a> <!-- 이동 bar의 뒤로 가기 표시 -->
+			<!-- 이벤트 처리 속성(on으로 시작하는 속성,onclick등)이 아닌 일반 속성에서 자바스크립트를 사용하려면 
+			javascript:자바스크립트 문법을 사용 -->
+		</div>
+		<div style="float : right;">
+			<a class="aNav" href="javascript:RotateNext()">&gt;&gt;</a> <!-- 이동bar의 앞으로 가기 표시 -->
+		</div>	
+		<div class="paging">
+			<a href="#" rel="1">1</a> <a href="#" rel="2">2</a> <a href="#" rel="3">3</a>
+		</div>			
+	</div>
+</div>
+
+<h3>Sample Code</h3>
+<pre>
+$(document).ready(function(){
+	
+	$(".paging a:first").addClass("active");
+	//자바스크립트로 필요한 변수 설정
+	var imageWidth = $(".carouselWindow").width();
+	//".carouselWindow의 가로크기 : 449px
+    var imageSum = $(".imageReel .image img").size(); 
+	//".imageReel .image img"엘리먼트 개수 구함 (3개)
+    var imageReelWidth = imageWidth * imageSum;
+	
+    $(".imageReel").css({"width" :imageReelWidth}); //이미지콘테이너창의 가로를 3장이 들어가는 크기로 조정
+	
+    rotate = function () { //자바스크립트는 함수도 변수 처리  rotate는 전역변수로 함수를 가짐
+    	var triggerID = $active.attr("rel") - 1; //클릭한 페이지번호에서 1을 뺀것
+    	var image_reelPosition = triggerID * imageWidth;
+    	$(".paging a").removeClass("active"); 
+    	$active.addClass("active");    	
+    	$(".imageReel").animate({
+    		left : -image_reelPosition
+    	},500);
+    }
+	    
+    startRotation();
+    
+    $(".paging a").click(function(){
+    	$active = $(this); //자바스크립트 변수 $active에   클릭한 a엘리먼트를 저장
+    	//변수 선언시 var이 사용하면 로칼변수가 아니고 전역 변수가 됨
+    	RotateImmediate();
+    	return false; //브라우져가 link로 점프하지 못하도록 함
+    });   
+
+});
+
+function RotateImmediate() {
+	clearInterval(play); //Stop the rotation(자바스크립트 내장 함수)	
+	rotate();
+	startRotation(); 
+}
+
+function startRotation() {
+	play = setInterval(function(){
+		$active = $(".paging a.active").next();
+		if($active.length == 0) {
+			 $active = $(".paging a:first");
+		}
+		rotate(); //전역변수로 선언된 rotate()함수 호출
+	},7000);
+}
+
+function RotatePrevious() {
+	var next = $(".paging a.active").prev(); //prev()메서드는 jquery내장 함수로 앞의 객체
+	if (next.length > 0) {
+		$active = next;
+        RotateImmediate();
+	}
+}
+
+function RotateNext() {
+	var next = $(".paging a.active").next(); //next()로 바로 다음 객체 구함
+    if (next.length > 0) {
+        $active = next;
+        RotateImmediate();
+    }
+}
+</pre>
+</body>
+</html>

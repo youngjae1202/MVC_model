@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>ajax</title>
+<base href="http://192.168.0.13:8181/mvcBoardProject/">
+<link type="text/css" rel="stylesheet" href="Web/Style/styleSheet.css">
+<style>
+#btn1 {
+	padding : 5px;
+	background : #e1e1e1;
+}
+</style>
+<script src="//code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("#btn1").click(function(){
+		$("#div1").load("Web/CarouselAdvance.html");
+	});	
+});
+</script>
+</head>
+<body>
+
+<div class="pageTitle">JQuery Ajax를 이용한 서버페이지 로딩 </div>
+<br/>
+<p>
+Ajax를 편리하게 사용하는 Jquery Ajax 를 이용하여 서버에 있는 페이지를 로딩
+	<ol>
+		<li><b>AJAX는 에이잭스라 발음함</b></li>
+		<li><b>AJAX는  Asynchronous JavaScript and XML의 약어임 </b></li>
+		<li><b>AJAX는 서버와의 데이터 교환을 비동기적으로 Background에서 페이지를 Reloading하지 않고
+		Update하는 기술로 Gmail, Google Maps, Youtube, and Facebook tabs에서 활용하고 있음</b></li>
+		<li><b>JQuery없이 AJAX를 구현하는 것은 꽤 까다로움</b></li>
+	</ol>
+</p>
+<br/><br/>
+<button id="btn1">Ajax Test를 위한 버튼(이곳을 클릭 하세요)</button><br/><br/>
+<div id="div1">
+버튼을 클릭하면 이곳에 서버에 있는 페이지를 loading하여 이 곳의 내용을 업데이트 해줌니다.....
+</div>
+
+</body>
+</html>
